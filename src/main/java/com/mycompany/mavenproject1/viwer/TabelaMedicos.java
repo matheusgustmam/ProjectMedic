@@ -13,6 +13,7 @@ import com.mycompany.mavenproject1.Modelo.MedicFabric;
 import com.mycompany.mavenproject1.Modelo.Fabrica;
 
 
+
 /**
  *
  * @author Aluno
@@ -24,7 +25,7 @@ public class TabelaMedicos extends javax.swing.JFrame {
      */
     public TabelaMedicos() {
         initComponents();
-        
+        listar();
       
     }
 
@@ -112,34 +113,125 @@ public class TabelaMedicos extends javax.swing.JFrame {
         getContentPane().add(btExcluirDrTM, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, -1, 20));
 
         btFecharDrTM.setText("Fechar");
+        btFecharDrTM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFecharDrTMActionPerformed(evt);
+            }
+        });
         getContentPane().add(btFecharDrTM, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, -1, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btMenuTMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuTMActionPerformed
-
+        TelaPrincipal view = new TelaPrincipal();
+        view.setVisible(true);
     }//GEN-LAST:event_btMenuTMActionPerformed
 
     private void btNovoDrTMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoDrTMActionPerformed
-  
+        TelaCadstroDR view = new TelaCadstroDR();
+        view.setVisible(true);
+        
+        view.addWindowListener(new WindowListener() {
+            public void windowClosing(WindowEvent e) {}
+            public void windowOpened(WindowEvent e) {}
+            public void windowClosed(WindowEvent e) {
+                listar();
+            }
+            public void windowIconified(WindowEvent e) {}
+            public void windowDeiconified(WindowEvent e) {}
+            public void windowActivated(WindowEvent e) {}
+            public void windowDeactivated(WindowEvent e) {}
+
+          
+        });
     }//GEN-LAST:event_btNovoDrTMActionPerformed
 
     private void btEditDrTMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditDrTMActionPerformed
-   
+        int idx = tableMedTM.getSelectedRow();
+        
+        if(idx > -1) {
+            TelaCadstroDR view = new TelaCadstroDR(ls.get(idx));
+            
+            view.setVisible(true);
+            
+            view.addWindowListener(new WindowListener() {
+                public void windowClosing(WindowEvent e) {}
+                public void windowOpened(WindowEvent e) {}
+                public void windowClosed(WindowEvent e) {
+                    listar();
+                }
+                public void windowIconified(WindowEvent e) {}
+                public void windowDeiconified(WindowEvent e) {}
+                public void windowActivated(WindowEvent e) {}
+                public void windowDeactivated(WindowEvent e) {}
+                
+            });
+        }else {
+            JOptionPane.showMessageDialog(this, "Selecione o Medico.",
+                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btEditDrTMActionPerformed
 
     private void btExcluirDrTMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirDrTMActionPerformed
-
+        int idx = tableMedTM.getSelectedRow();
+                
+        if (idx > -1) {
+            Medic obj = ls.get(idx);
+            
+            if(JOptionPane.showConfirmDialog(this,
+                    "Tem Certeza que deseja excluir: "+obj.getNomeDr(),
+                    "Excluir?",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                
+                Fabrica<Medic> fabrica = new MedicFabric();
+                
+                if(fabrica.excluir(obj)){
+                    listar();
+                }else {
+                    JOptionPane.showConfirmDialog(this,
+                           "O Medico não pode ser Excuido.",
+                           "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+                    
+            }
+        }else {
+            JOptionPane.showMessageDialog(this, "Selecione o Medico.",
+            "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btExcluirDrTMActionPerformed
+
+    private void btFecharDrTMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharDrTMActionPerformed
+        dispose();
+    }//GEN-LAST:event_btFecharDrTMActionPerformed
     
     /**
      * @param args the command line arguments
      */
+    public void cadastrado(Medic novo){
+        DefaultTableModel model = (DefaultTableModel) tableMedTM.getModel();
+        
+        model.insertRow(0,new Object[] { novo.getNomeDr(), novo.getEspecialidade()});
+        
+        tableMedTM.setModel(model);
+    }
     
- 
-   
+    public void listar() {
+        DefaultTableModel model = (DefaultTableModel) tableMedTM.getModel();
+        model.getDataVector().removeAllElements();
+        
+        Fabrica<Medic> fabrica = new MedicFabric();
+        ls = fabrica.listar();
+        
+        for (Medic obj : ls){
+            model.addRow(new Object[] { obj.getNomeDr(), obj.getEspecialidade()});
+        }
+        
+        tableMedTM.setModel(model);
+    }
     
+    private List<Medic> ls;
+            
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditDrTM;
     private javax.swing.JButton btExcluirDrTM;
@@ -152,4 +244,7 @@ public class TabelaMedicos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tableMedTM;
     // End of variables declaration//GEN-END:variables
+
+    //criado clase tblLista testes
+   
 }

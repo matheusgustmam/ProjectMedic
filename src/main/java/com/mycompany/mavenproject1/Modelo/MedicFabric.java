@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 /**
  *
  * @author Matheus
@@ -67,7 +69,6 @@ public class MedicFabric implements Fabrica<Medic> {
         }catch (SQLException ex){
             ex.printStackTrace();
         }
-        
         return false;
     }
     
@@ -88,7 +89,6 @@ public class MedicFabric implements Fabrica<Medic> {
         }catch (SQLException ex){
             ex.printStackTrace();
         }
-        
         return false;
     }
     
@@ -119,6 +119,38 @@ public class MedicFabric implements Fabrica<Medic> {
             return null;
         }
     }
+    
+   
+    @Override
+    public Medic getEntidade(Integer id){
+        try{
+            Medic medico = new Medic();
+            
+            Connection con = DBconex.getInstancia().getConexao();
+            
+            String sql = "SELECT * FROM medicos WHERE idmedicos=?";
+            
+            PreparedStatement pstm = con.prepareStatement(sql);
+            
+            pstm.setInt(1, id);
+            
+            ResultSet rs =pstm.executeQuery();
+            
+            if(rs.next()){
+                medico.setNomeDr(rs.getString("NomeDR"));
+                medico.setEspecialidade(rs.getString("Especialidade"));
+                medico.setId(rs.getInt("idmedicos"));
+            }
+            rs.close();
+            return medico;
+            
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    
 }
 
 

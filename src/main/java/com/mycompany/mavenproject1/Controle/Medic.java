@@ -37,9 +37,11 @@ public class Medic extends DataObject {
     public void setEspecialidade(String Especialidade) {
         this.Especialidade = Especialidade;
     }
-    
-    public String toStirng(){
-        return getNomeDr();
+    @Override
+    public String toString() {
+        return NomeDr; 
     }
+    
+   
     
 }

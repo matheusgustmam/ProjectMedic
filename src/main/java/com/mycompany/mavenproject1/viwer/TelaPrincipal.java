@@ -4,6 +4,12 @@
  */
 package com.mycompany.mavenproject1.viwer;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+
 /**
  *
  * @author Matheus
@@ -15,8 +21,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+        
+        data(data);
+        hora(hora); 
+        
     }
 
+    Date dataHoraAtual = new Date();
+        String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
+        String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual); 
+    
+    public void data(String data){
+        txtDiaHoje.setText(data);
+    }     
+    public void hora(String hora){
+        txtHorasHoje.setText(hora);
+    }
+         
+    
+
+        
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,6 +163,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel10.setText("Dia  :");
 
+        txtDiaHoje.setEditable(false);
         txtDiaHoje.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         txtDiaHoje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,6 +173,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel11.setText("Horas:");
 
+        txtHorasHoje.setEditable(false);
         txtHorasHoje.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
 
         bFechar.setText("Fechar");
@@ -386,7 +413,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAtestado;
     private javax.swing.JButton bAtulizar;

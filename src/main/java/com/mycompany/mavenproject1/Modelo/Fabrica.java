@@ -17,5 +17,5 @@ public interface Fabrica<K extends DataObject> {
     public boolean salvar(K obj);
     public boolean excluir(K obj);
     public List<K> listar();
-    
+    public K getEntidade(Integer obj);
 }

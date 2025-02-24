@@ -9,12 +9,15 @@ import com.mycompany.mavenproject1.Controle.Medic;
 import com.mycompany.mavenproject1.Modelo.MedicFabric;
 import com.mycompany.mavenproject1.Modelo.Fabrica;
 
+
 /**
  *
  * @author Aluno
  */
 public class TelaCadstroDR extends javax.swing.JFrame {
-
+    
+    private String especialidades; 
+    
     /**
      * Creates new form TelaCadstroDR
      */
@@ -22,14 +25,16 @@ public class TelaCadstroDR extends javax.swing.JFrame {
         initComponents();
         
         setValor(new Medic());
+        this.especialidades = "";
     }
-
+    
+    
     public TelaCadstroDR (Medic valor){
         initComponents();
         
         setValor(valor);
         txtNomeDR.setText(valor.getNomeDr());
-        txtEspecia.setText(valor.getEspecialidade());
+        //txtEspecia.setText(valor.getEspecialidade());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,10 +50,15 @@ public class TelaCadstroDR extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNomeDR = new javax.swing.JTextField();
-        txtEspecia = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButtonCadasDR = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        cbNeuro = new javax.swing.JCheckBox();
+        cbCardio = new javax.swing.JCheckBox();
+        cbCGeral = new javax.swing.JCheckBox();
+        cbDermo = new javax.swing.JCheckBox();
+        cbEndor = new javax.swing.JCheckBox();
+        cbOftmo = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(851, 487));
@@ -60,8 +70,6 @@ public class TelaCadstroDR extends javax.swing.JFrame {
         jLabel3.setText("Especialidade:");
 
         txtNomeDR.setText("Nome Dr");
-
-        txtEspecia.setText("Especialidade");
 
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -89,32 +97,84 @@ public class TelaCadstroDR extends javax.swing.JFrame {
             }
         });
 
+        cbNeuro.setText("Neurologista");
+        cbNeuro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNeuroActionPerformed(evt);
+            }
+        });
+
+        cbCardio.setText("Cardiologista");
+        cbCardio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCardioActionPerformed(evt);
+            }
+        });
+
+        cbCGeral.setText("Clinico Geral");
+        cbCGeral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCGeralActionPerformed(evt);
+            }
+        });
+
+        cbDermo.setText("Dermatologista");
+        cbDermo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDermoActionPerformed(evt);
+            }
+        });
+
+        cbEndor.setText("Endocrinologista");
+        cbEndor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbEndorActionPerformed(evt);
+            }
+        });
+
+        cbOftmo.setText("Oftalmologista");
+        cbOftmo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbOftmoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEspecia))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNomeDR, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(622, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(577, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonCadasDR)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(34, 34, 34))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtNomeDR, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cbCardio)
+                                .addComponent(cbCGeral))
+                            .addGap(27, 27, 27)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cbOftmo)
+                                .addComponent(cbEndor))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbNeuro)
+                        .addGap(29, 29, 29)
+                        .addComponent(cbDermo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,10 +188,20 @@ public class TelaCadstroDR extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtNomeDR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtEspecia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
+                    .addComponent(cbNeuro)
+                    .addComponent(cbDermo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbCardio)
+                    .addComponent(cbEndor))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbCGeral)
+                    .addComponent(cbOftmo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButtonCadasDR)
@@ -158,18 +228,81 @@ public class TelaCadstroDR extends javax.swing.JFrame {
     private void jButtonCadasDRMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadasDRMousePressed
         Medic obj = getValor();
         obj.setNomeDr(txtNomeDR.getText());
-        obj.setEspecialidade(txtEspecia.getText());
+        obj.setEspecialidade(especialidades);
         
         setValor(obj);
         
         Fabrica<Medic> fa = new MedicFabric();
         if (fa.salvar(obj)){
+            JOptionPane.showMessageDialog(this, "Medico foi cadastrado com Sucesso!.");
             dispose();
         }else{
             JOptionPane.showMessageDialog(this, "Medico não pode ser salvo","Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonCadasDRMousePressed
+    
+    
+    private void cbNeuroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNeuroActionPerformed
+        if (this.cbNeuro.isSelected()) { 
+        if (!this.especialidades.contains("Neurologista")) {
+            this.especialidades += "Neurologista^";
+        }
+    } else {
+        this.especialidades = this.especialidades.replace("Neurologista^", "");
+    }   
+    }//GEN-LAST:event_cbNeuroActionPerformed
 
+    private void cbCardioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCardioActionPerformed
+        if (this.cbCardio.isSelected()) { 
+        if (!this.especialidades.contains("Cardiologista")) {
+            this.especialidades += "Cardiologista^";
+        }
+    } else {
+        this.especialidades = this.especialidades.replace("Cardiologista^", "");
+    }
+    }//GEN-LAST:event_cbCardioActionPerformed
+        
+    private void cbCGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCGeralActionPerformed
+        if (this.cbCGeral.isSelected()) { 
+        if (!this.especialidades.contains("Clinico Geral")) {
+            this.especialidades += "Clinico Geral^";
+        }
+    } else {
+        this.especialidades = this.especialidades.replace("Clinico Geral^", "");
+    }
+    }//GEN-LAST:event_cbCGeralActionPerformed
+
+    private void cbDermoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDermoActionPerformed
+        if (this.cbDermo.isSelected()) { 
+        if (!this.especialidades.contains("Dermatologista")) {
+            this.especialidades += "Dermatologista^";
+        }
+    } else {
+        this.especialidades = this.especialidades.replace("Dermatologista^", "");
+    }
+    }//GEN-LAST:event_cbDermoActionPerformed
+
+    private void cbEndorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEndorActionPerformed
+        if (this.cbEndor.isSelected()) { 
+        if (!this.especialidades.contains("Endocrinologista")) {
+            this.especialidades += "Endocrinologista^";
+        }
+    } else {
+        this.especialidades = this.especialidades.replace("Endocrinologista^", "");
+    }
+    }//GEN-LAST:event_cbEndorActionPerformed
+
+    private void cbOftmoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOftmoActionPerformed
+        if (this.cbOftmo.isSelected()) { 
+        if (!this.especialidades.contains("Oftalmologista")) {
+            this.especialidades += "Oftalmologista^";
+        }
+    } else {
+        this.especialidades = this.especialidades.replace("Oftalmologista^", "");
+    }
+    }//GEN-LAST:event_cbOftmoActionPerformed
+    
+    
     private Medic valor;
     
     public Medic getValor(){
@@ -215,6 +348,12 @@ public class TelaCadstroDR extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox cbCGeral;
+    private javax.swing.JCheckBox cbCardio;
+    private javax.swing.JCheckBox cbDermo;
+    private javax.swing.JCheckBox cbEndor;
+    private javax.swing.JCheckBox cbNeuro;
+    private javax.swing.JCheckBox cbOftmo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonCadasDR;
@@ -222,7 +361,6 @@ public class TelaCadstroDR extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField txtEspecia;
     private javax.swing.JTextField txtNomeDR;
     // End of variables declaration//GEN-END:variables
 }

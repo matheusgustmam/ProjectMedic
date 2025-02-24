@@ -168,4 +168,9 @@ public class PacienteFabrica implements Fabrica<Paciente> {
             return null;
         }
     }
+
+    @Override
+    public Paciente getEntidade(Integer obj) {
+       return null;
+    }
 }

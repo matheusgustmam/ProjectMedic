@@ -4,6 +4,8 @@
  */
 package com.mycompany.mavenproject1.Controle;
 
+
+import java.sql.Time;
 import java.util.Date;
 /**
  *
@@ -11,35 +13,36 @@ import java.util.Date;
  */
 public class Consulta extends DataObject {
     
-    private Paciente pacienteConsult;
-    private Medic medicConsult;
+    private String pacienteConsult;
+    private String medicConsult;
+    private Integer id_medico;
     private String escpConsult;
     private Date dtConsult;
-    private Date hrConsult;
+    private String hrConsult;
     private String obsConsult;
     
-    public Paciente getPaciente(){
+    public String getPacienteConsult(){
         return pacienteConsult;
     }
     
-    public void setPaciente(Paciente pacienteConsult){
+    public void setPacienteConsult(String pacienteConsult){
         this.pacienteConsult = pacienteConsult;
     }
     
-    public Medic getMedic(){
+    public String getMedicConsult(){
         return medicConsult;
     }
     
-    public void setMedic(Medic medicConsult){
+    public void setMedicConsult(String medicConsult){
         this.medicConsult = medicConsult;
     }
     
     public String getEscp(){
-        return escpConsult;
+        return getEscpConsult();
     }
     
     public void setEscp(String escpConsult){
-        this.escpConsult = escpConsult;
+        this.setEscpConsult(escpConsult);
     }
     
     public Date getDtConsult(){
@@ -50,11 +53,11 @@ public class Consulta extends DataObject {
         this.dtConsult = dtConsult;
     }
     
-    public Date getHrConsult(){
+    public String getHrConsult(){
         return hrConsult;
     }
     
-    public void setHrConsult(Date hrConsult){
+    public void setHrConsult(String hrConsult){
         this.hrConsult = hrConsult;
     }
     
@@ -64,6 +67,22 @@ public class Consulta extends DataObject {
     
     public void setObsConsult(String obsConsult){
         this.obsConsult = obsConsult;
+    }
+
+    public Integer getId_medico() {
+        return id_medico;
+    }
+
+    public void setId_medico(Integer id_medico) {
+        this.id_medico = id_medico;
+    }
+
+    public String getEscpConsult() {
+        return escpConsult;
+    }
+
+    public void setEscpConsult(String escpConsult) {
+        this.escpConsult = escpConsult;
     }
     
 }

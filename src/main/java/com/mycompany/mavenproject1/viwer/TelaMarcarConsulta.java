@@ -7,12 +7,22 @@ package com.mycompany.mavenproject1.viwer;
 import com.mycompany.mavenproject1.Controle.Consulta;
 import com.mycompany.mavenproject1.Controle.Medic;
 import com.mycompany.mavenproject1.Controle.Paciente;
+import com.mycompany.mavenproject1.Modelo.ConsultaFabric;
 import com.mycompany.mavenproject1.Modelo.Fabrica;
 import com.mycompany.mavenproject1.Modelo.MedicFabric;
 import com.mycompany.mavenproject1.Modelo.PacienteFabrica;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ComboBoxModel;
 import java.util.List;
+import java.util.SimpleTimeZone;
+import java.util.logging.SimpleFormatter;
+import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -23,14 +33,41 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
     /**
      * Creates new form TelaMarcarConsulta
      */
+    private Medic medico;
+    
     public TelaMarcarConsulta() {
         initComponents();
         
-        setvalor(new Consulta());
+        this.medico= new Medic();
+        setValor(new Consulta());
         listarPaciente();
         listarMedic();
+        
+        
+        setValor(new Consulta());
     }
 
+    public TelaMarcarConsulta(Consulta valor){
+        initComponents();
+        
+        setValor(valor);
+        Fabrica<Medic> fabrica = new MedicFabric();
+        cbDrCon.addItem(fabrica.getEntidade(valor.getId_medico()));
+        cbEspecialidadeCon.addItem(valor.getEscp());
+        
+        cbPacienteCon.setSelectedItem(valor.getPacienteConsult());
+        cbDrCon.setSelectedItem(valor);
+        cbEspecialidadeCon.setSelectedItem(valor.getEscp());
+        txaObsCon.setText(valor.getObsConsult());
+        txfHorasConst.setText(valor.getHrConsult());
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+        txfDateConst.setValue(formatter.format(valor.getDtConsult()));
+        
+        //SimpleDateFormat formatterhor = new SimpleDateFormat("hh:mm:ss");
+        //txfHorasConst.setValue(formatterhor.format(valor.getHrConsult()));
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,12 +89,12 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
         txaObsCon = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btMarcarCon = new javax.swing.JButton();
+        btFechar = new javax.swing.JButton();
+        btMenu = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        txfDateConst = new javax.swing.JFormattedTextField();
+        txfHorasConst = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -67,15 +104,19 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
 
         jLabel3.setText("Dr:");
 
-        jLabel4.setText("Especilaidade:");
+        jLabel4.setText("Especialidade");
 
         jLabel5.setText("Obs:");
 
         cbPacienteCon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbDrCon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbDrCon.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbDrConItemStateChanged(evt);
+            }
+        });
 
-        cbEspecialidadeCon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbEspecialidadeCon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "teste" }));
 
         txaObsCon.setColumns(20);
         txaObsCon.setRows(5);
@@ -85,25 +126,38 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
 
         jLabel7.setText("Horas Da Consulta");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jSpinner1.setModel(new javax.swing.SpinnerDateModel());
-
-        jButton1.setText("Marcar Consulta");
-
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btMarcarCon.setText("Marcar Consulta");
+        btMarcarCon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btMarcarConActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Menu");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btFechar.setText("Cancelar");
+        btFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btFecharActionPerformed(evt);
             }
         });
+
+        btMenu.setText("Menu");
+        btMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMenuActionPerformed(evt);
+            }
+        });
+
+        try {
+            txfDateConst.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            txfHorasConst.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,7 +165,7 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,28 +182,28 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbEspecialidadeCon, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 326, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSpinner1)
-                            .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(77, 77, 77))
+                            .addComponent(txfHorasConst, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                            .addComponent(txfDateConst))
+                        .addGap(48, 48, 48))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(91, 406, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btMenu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(btFechar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btMarcarCon)
                 .addGap(20, 20, 20))
             .addComponent(jSeparator1)
         );
@@ -165,13 +219,13 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cbPacienteCon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txfDateConst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cbDrCon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txfHorasConst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -182,58 +236,115 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btMarcarCon)
+                    .addComponent(btFechar)
+                    .addComponent(btMenu))
                 .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuActionPerformed
         TelaPrincipal view = new TelaPrincipal();
         view.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btMenuActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btFecharActionPerformed
 
-    public void listarPaciente(){
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
+    private void btMarcarConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMarcarConActionPerformed
+        Consulta obj = getValor();
+        medico = (Medic)cbDrCon.getSelectedItem();
+        obj.setPacienteConsult(cbPacienteCon.getSelectedItem().toString());
+        obj.setMedicConsult(cbDrCon.getSelectedItem().toString());
+        obj.setId_medico(medico.getId());
+        obj.setEscp(cbEspecialidadeCon.getSelectedItem().toString());
+        obj.setObsConsult(txaObsCon.getText());
+        obj.setHrConsult(txfHorasConst.getText());
         
         
-        Fabrica<Paciente> fabrica = new PacienteFabrica();
-        List<Paciente> ls = fabrica.listar();
-        model.addAll(ls);
+        try{
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+            obj.setDtConsult(formatter.parse(txfDateConst.getText()));
+            
+            //SimpleTimeZone formatterhor = new SimpleTimeZone(ABORT, ID),"hh:mm:ss");
+            //obj.setHrConsult(formatterhor.parse(txfHorasConst.getText()));
+                    
+            setValor(obj);
+            
+            Fabrica<Consulta> fa = new ConsultaFabric();
+            if(fa.salvar(obj)){
+                JOptionPane.showMessageDialog(this, "Cosnulta marcada com Sucesso.");
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "A consulta não pode ser marcada.",
+                        "Erro",JOptionPane.ERROR_MESSAGE);
+            }
+        }catch (ParseException ex){
+            JOptionPane.showMessageDialog(this, "Data da Consutal invalida ou Horario invalido.",
+                    "Erro",JOptionPane.ERROR_MESSAGE);
+        }
+     
+    }//GEN-LAST:event_btMarcarConActionPerformed
+
+    private void cbDrConItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbDrConItemStateChanged
+        listarMedicExp((Medic) cbDrCon.getSelectedItem());
         
-        cbPacienteCon.setModel(model);
-    }
-    
-    public void listarMedic(){
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        
-        
-        Fabrica<Medic> fabrica = new MedicFabric();
-        List<Medic> ls = fabrica.listar();
-        model.addAll(ls);
-        
-        cbDrCon.setModel(model);
-    }
-    
-  
-    
+    }//GEN-LAST:event_cbDrConItemStateChanged
+
     private Consulta valor;
     
     public Consulta getValor(){
         return valor;
     }
     
-    public void setvalor(Consulta valor){
+    public void setValor(Consulta valor){
         this.valor = valor;
     }
+            
+    public void listarPaciente(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+             
+        Fabrica<Paciente> fabrica = new PacienteFabrica();
+        List<Paciente> ls = fabrica.listar();
+        for (int i = 0; i < ls.size(); i++) {
+            model.addElement(ls.get(i).getNome()); 
+        }
+      
+        cbPacienteCon.setModel(model);
+    }
     
+    public void listarMedic(){
+        DefaultComboBoxModel<Medic> model = new DefaultComboBoxModel();
+        
+        
+        Fabrica<Medic> fabrica = new MedicFabric();
+        List<Medic> ls = fabrica.listar();
+        for (int i = 0; i < ls.size(); i++) {
+            model.addElement(ls.get(i)); 
+            
+        }
+        
+        cbDrCon.setModel(model);
+    }
+    
+    public void listarMedicExp(Medic medico){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        String[] espec = medico.getEspecialidade().split("\\^");
+        model.addAll(Arrays.asList(espec));
+        
+       
+        
+        cbEspecialidadeCon.setModel(model);
+    } 
+    
+   
+   
+   
     /**
      * @param args the command line arguments
      */
@@ -270,13 +381,12 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbDrCon;
+    private javax.swing.JButton btFechar;
+    private javax.swing.JButton btMarcarCon;
+    private javax.swing.JButton btMenu;
+    private javax.swing.JComboBox<Medic> cbDrCon;
     private javax.swing.JComboBox<String> cbEspecialidadeCon;
     private javax.swing.JComboBox<String> cbPacienteCon;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -286,7 +396,8 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea txaObsCon;
+    private javax.swing.JFormattedTextField txfDateConst;
+    private javax.swing.JFormattedTextField txfHorasConst;
     // End of variables declaration//GEN-END:variables
 }
