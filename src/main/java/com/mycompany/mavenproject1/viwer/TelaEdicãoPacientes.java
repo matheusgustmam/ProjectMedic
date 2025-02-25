@@ -241,7 +241,7 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
         
         for (Paciente obj : ls) {
             model.addRow(new Object[] { obj.getNome(), obj.getCpf(), obj.getDataNscP(), obj.getEmail(),
-            obj.getTel(), obj.getCidade(), obj.getObs(), obj.getAlerg(), obj.getDiabe(), obj.getPrecaoAlti(), obj.getPrecaoBaixa()});
+            obj.getTel(), obj.getCidadeStr(), obj.getObs(), obj.getAlerg(), obj.getDiabe(), obj.getPrecaoAlti(), obj.getPrecaoBaixa()});
         }
         
         tbPacientsTP.setModel(model);
