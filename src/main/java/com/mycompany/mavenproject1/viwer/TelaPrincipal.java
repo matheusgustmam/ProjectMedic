@@ -193,6 +193,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         btTablePaci.setText("Tabela Pacientes");
+        btTablePaci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTablePaciActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Tabela de Pacientes");
 
@@ -392,6 +397,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void bFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFecharActionPerformed
         dispose();
     }//GEN-LAST:event_bFecharActionPerformed
+
+    private void btTablePaciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTablePaciActionPerformed
+        TelaEdicãoPacientes view = new TelaEdicãoPacientes();
+        view.setVisible(true);
+    }//GEN-LAST:event_btTablePaciActionPerformed
 
     /**
      * @param args the command line arguments
