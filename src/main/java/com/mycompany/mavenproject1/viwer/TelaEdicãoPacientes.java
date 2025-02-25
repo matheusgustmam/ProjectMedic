@@ -180,7 +180,7 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btFecharTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharTPActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btFecharTPActionPerformed
 
     private void btNovoPaciTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoPaciTPActionPerformed

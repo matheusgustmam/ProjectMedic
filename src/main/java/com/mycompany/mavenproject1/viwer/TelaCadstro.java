@@ -38,10 +38,44 @@ public class TelaCadstro extends javax.swing.JFrame {
         txtTelefoneCP.setText(valor.getTel());
         txtObsCP.setText(valor.getObs());
         cboxCidadeCP.setSelectedIndex(valor.getCidade());
-        rbAlergConteCP.setActionCommand(valor.getAlerg());
-        rbAlerNaoCP.setActionCommand(valor.getAlerg());
+        //rbAlergConteCP.setActionCommand(valor.getAlerg());
+        //rbAlerNaoCP.setActionCommand(valor.getAlerg());
+       /* if(rbAlergConteCP.isSelected()){
+            valor.getAlerg("Comtem");
+            
+        }else if(rbAlerNaoCP.isSelected()){
+            valor.getAlerg("Não Contem");
+        }
         
+        if(rbDiabContemCP.isSelected()){
+            valor.getDiabe("Comtem");
+            
+        }else if(rbDiabNaoCP.isSelected()){
+            valor.getDiabe("Não Contem");
+        }
         
+        if(rbPreAltaContemCP.isSelected()){
+            valor.getAlerg("Comtem");
+            
+        }else if(rbPreAltaNaoCP.isSelected()){
+            valor.getPrecaoAlti("Não Contem");
+        }
+        
+        if(rbPreBaixaContemCP.isSelected()){
+            valor.getPrecaoBaixa("Comtem");
+            
+        }else if(rbPreBaixaNaoCP.isSelected()){
+            valor.getPrecaoBaixa("Não Contem");
+        }
+        */
+        if (valor != null) {
+        setValor(valor);
+        txtNomeCP.setText(valor.getNome() != null ? valor.getNome() : "");
+        txtCpfCP.setText(valor.getCpf() != null ? valor.getCpf() : "");
+        txtEmailCP.setText(valor.getEmail() != null ? valor.getEmail() : "");
+        txtTelefoneCP.setText(valor.getTel() != null ? valor.getTel() : "");
+        txtObsCP.setText(valor.getObs() != null ? valor.getObs() : "");
+}
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         txtNascCP.setValue(formatter.format(valor.getDataNscP()));
     }
