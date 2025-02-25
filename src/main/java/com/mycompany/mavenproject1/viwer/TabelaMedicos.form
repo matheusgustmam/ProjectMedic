@@ -95,20 +95,20 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="560" y="460" width="-1" height="20"/>
+          <AbsoluteConstraints x="90" y="460" width="70" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btNovoDrTM">
       <Properties>
-        <Property name="text" type="java.lang.String" value="New DR"/>
+        <Property name="text" type="java.lang.String" value="Novo DR"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btNovoDrTMActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="480" y="460" width="-1" height="20"/>
+          <AbsoluteConstraints x="10" y="460" width="70" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -121,7 +121,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="640" y="460" width="-1" height="20"/>
+          <AbsoluteConstraints x="170" y="460" width="80" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -134,7 +134,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="810" y="460" width="-1" height="20"/>
+          <AbsoluteConstraints x="800" y="460" width="-1" height="20"/>
         </Constraint>
       </Constraints>
     </Component>

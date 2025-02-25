@@ -94,15 +94,15 @@ public class TabelaMedicos extends javax.swing.JFrame {
                 btEditDrTMActionPerformed(evt);
             }
         });
-        getContentPane().add(btEditDrTM, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, -1, 20));
+        getContentPane().add(btEditDrTM, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 70, 20));
 
-        btNovoDrTM.setText("New DR");
+        btNovoDrTM.setText("Novo DR");
         btNovoDrTM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btNovoDrTMActionPerformed(evt);
             }
         });
-        getContentPane().add(btNovoDrTM, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, -1, 20));
+        getContentPane().add(btNovoDrTM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 70, 20));
 
         btExcluirDrTM.setText("Excluir");
         btExcluirDrTM.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class TabelaMedicos extends javax.swing.JFrame {
                 btExcluirDrTMActionPerformed(evt);
             }
         });
-        getContentPane().add(btExcluirDrTM, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, -1, 20));
+        getContentPane().add(btExcluirDrTM, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, 80, 20));
 
         btFecharDrTM.setText("Fechar");
         btFecharDrTM.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +118,7 @@ public class TabelaMedicos extends javax.swing.JFrame {
                 btFecharDrTMActionPerformed(evt);
             }
         });
-        getContentPane().add(btFecharDrTM, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, -1, 20));
+        getContentPane().add(btFecharDrTM, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 460, -1, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

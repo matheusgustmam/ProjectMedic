@@ -173,7 +173,7 @@ public class TelaCadstro extends javax.swing.JFrame {
             }
         });
 
-        btCancelarCP.setText("Cancelar");
+        btCancelarCP.setText("Fechar");
         btCancelarCP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btCancelarCPMousePressed(evt);

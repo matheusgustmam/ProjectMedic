@@ -133,7 +133,7 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
             }
         });
 
-        btFechar.setText("Cancelar");
+        btFechar.setText("Fechar");
         btFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btFecharActionPerformed(evt);
@@ -199,11 +199,11 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
                         .addGap(91, 406, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btMarcarCon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btMenu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btFechar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btMarcarCon)
                 .addGap(20, 20, 20))
             .addComponent(jSeparator1)
         );
