@@ -261,7 +261,16 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
             }
         });
     }
-
+    public void cadastrado(Paciente novo) {        
+        DefaultTableModel model = (DefaultTableModel) tbPacientsTP.getModel();
+        
+        model.insertRow(0, new Object[] { novo.getNome(), novo.getCpf(), novo.getDataNscP(), novo.getEmail(),
+        novo.getTel(), novo.getCidadeStr(), novo.getObs(), novo.getAlerg(), novo.getDiabe(), novo.getPrecaoAlti(), novo.getPrecaoBaixa()
+        });
+        
+        tbPacientsTP.setModel(model);
+    }
+    
      public void listar() {        
         DefaultTableModel model = (DefaultTableModel) tbPacientsTP.getModel();
         model.getDataVector().removeAllElements();
