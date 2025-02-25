@@ -38,8 +38,8 @@ public class TelaCadstro extends javax.swing.JFrame {
         txtTelefoneCP.setText(valor.getTel());
         txtObsCP.setText(valor.getObs());
         cboxCidadeCP.setSelectedIndex(valor.getCidade());
-        //rbAlergConteCP.setActionCommand(valor.getAlerg());
-        //rbAlerNaoCP.setActionCommand(valor.getAlerg());
+        rbAlergConteCP.setActionCommand(valor.getAlerg());
+        rbAlerNaoCP.setActionCommand(valor.getAlerg());
        /* if(rbAlergConteCP.isSelected()){
             valor.getAlerg("Comtem");
             
