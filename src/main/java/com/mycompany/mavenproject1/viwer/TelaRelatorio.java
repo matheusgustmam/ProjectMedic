@@ -110,6 +110,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
         });
 
         btFecharTR.setText("Fechar");
+        btFecharTR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFecharTRActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,6 +214,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
         TelaPrincipal view = new TelaPrincipal();
         view.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btFecharTRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharTRActionPerformed
+        dispose();
+    }//GEN-LAST:event_btFecharTRActionPerformed
 
     /**
      * @param args the command line arguments

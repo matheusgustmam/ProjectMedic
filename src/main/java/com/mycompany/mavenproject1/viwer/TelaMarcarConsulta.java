@@ -54,6 +54,7 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
         Fabrica<Medic> fabrica = new MedicFabric();
         cbDrCon.addItem(fabrica.getEntidade(valor.getId_medico()));
         cbEspecialidadeCon.addItem(valor.getEscp());
+        cbPacienteCon.addItem(valor.getPacienteConsult());
         
         cbPacienteCon.setSelectedItem(valor.getPacienteConsult());
         cbDrCon.setSelectedItem(valor);
@@ -277,7 +278,7 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
             
             Fabrica<Consulta> fa = new ConsultaFabric();
             if(fa.salvar(obj)){
-                JOptionPane.showMessageDialog(this, "Cosnulta marcada com Sucesso.");
+                JOptionPane.showMessageDialog(this, "Consulta foi marcada com Sucesso.");
                 dispose();
             }else{
                 JOptionPane.showMessageDialog(this, "A consulta não pode ser marcada.",

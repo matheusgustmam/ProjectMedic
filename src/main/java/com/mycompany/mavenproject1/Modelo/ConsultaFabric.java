@@ -74,6 +74,7 @@ public class ConsultaFabric implements Fabrica<Consulta> {
                     + "dataConsulta=?, "
                     + "horaConsulta=?, "
                     + "obsConsulta=? "
+                    + ""
                     +"WHERE id=?";
             
             PreparedStatement psp = con.prepareStatement(sql);
