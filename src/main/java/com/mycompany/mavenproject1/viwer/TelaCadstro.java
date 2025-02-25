@@ -68,6 +68,11 @@ public class TelaCadstro extends javax.swing.JFrame {
             valor.getPrecaoBaixa("Não Contem");
         }
         */
+        if (rbAlergConteCP.isSelected()) {
+        valor.setAlerg("Contém"); // Assumindo que existe um método setAlerg()
+        } else if (rbAlerNaoCP.isSelected()) {
+        valor.setAlerg("Não Contém");
+        }
         if (valor != null) {
         setValor(valor);
         txtNomeCP.setText(valor.getNome() != null ? valor.getNome() : "");
