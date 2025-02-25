@@ -77,6 +77,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         bAtulizar = new javax.swing.JButton();
+        btTablePaci = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(851, 487));
@@ -190,6 +192,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btTablePaci.setText("Tabela Pacientes");
+
+        jLabel12.setText("Tabela de Pacientes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -220,7 +226,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(16, 16, 16)
                                         .addComponent(jLabel2)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(bAtestado, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,6 +234,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                         .addComponent(bTabelaMedic, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(27, 27, 27))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btTablePaci)
+                                            .addComponent(jLabel12))
+                                        .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3)
                                             .addComponent(bRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -285,13 +295,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel12))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCadstroP)
                     .addComponent(bMarcarCon)
                     .addComponent(bRelatorio)
-                    .addComponent(bHistoricoHoje))
+                    .addComponent(bHistoricoHoje)
+                    .addComponent(btTablePaci))
                 .addGap(27, 27, 27)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -429,9 +441,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton bMarcarCon;
     private javax.swing.JButton bRelatorio;
     private javax.swing.JButton bTabelaMedic;
+    private javax.swing.JButton btTablePaci;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

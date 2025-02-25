@@ -68,7 +68,7 @@
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="145" max="32767" attributes="0"/>
+                              <EmptySpace pref="32" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="bAtestado" min="-2" pref="118" max="-2" attributes="0"/>
@@ -77,6 +77,11 @@
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btTablePaci" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                           <Component id="bRelatorio" min="-2" pref="119" max="-2" attributes="0"/>
@@ -151,6 +156,7 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -158,6 +164,7 @@
                   <Component id="bMarcarCon" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bRelatorio" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bHistoricoHoje" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btTablePaci" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="15" max="-2" attributes="0"/>
@@ -356,6 +363,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAtulizarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btTablePaci">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tabela Pacientes"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tabela de Pacientes"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
