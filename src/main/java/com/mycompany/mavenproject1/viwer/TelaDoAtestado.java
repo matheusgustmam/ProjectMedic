@@ -79,6 +79,11 @@ public class TelaDoAtestado extends javax.swing.JFrame {
         jLabel6.setText("Data do Atestado:");
 
         jButton2.setText("Emitir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Fechar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +190,13 @@ public class TelaDoAtestado extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+            JasperReport AtestadoCompilado
+                    = JasperCompileManager.compilert("");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
