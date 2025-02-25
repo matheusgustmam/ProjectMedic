@@ -71,6 +71,11 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
         });
 
         btEditTP.setText("Editar");
+        btEditTP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditTPActionPerformed(evt);
+            }
+        });
 
         btExcluirTP.setText("Excluir");
 
@@ -195,6 +200,32 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
             
         });
     }//GEN-LAST:event_btNovoPaciTPActionPerformed
+
+    private void btEditTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditTPActionPerformed
+        int idx = tbPacientsTP.getSelectedRow();
+        
+        if (idx > -1) {
+            TelaCadstro view = new TelaCadstro(ls.get(idx));
+            
+            view.setVisible(true);
+            
+            view.addWindowListener(new WindowListener() {
+                public void windowClosing(WindowEvent e) {}
+                public void windowOpened(WindowEvent e) {}
+                public void windowClosed(WindowEvent e) {
+                    listar();
+                }
+                public void windowIconified(WindowEvent e) {}
+                public void windowDeiconified(WindowEvent e) {}
+                public void windowActivated(WindowEvent e) {}
+                public void windowDeactivated(WindowEvent e) {}
+
+            });
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um Paciete.", 
+                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btEditTPActionPerformed
 
     /**
      * @param args the command line arguments
