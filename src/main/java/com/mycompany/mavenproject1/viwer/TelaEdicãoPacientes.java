@@ -4,6 +4,15 @@
  */
 package com.mycompany.mavenproject1.viwer;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import com.mycompany.mavenproject1.Controle.Paciente;
+import com.mycompany.mavenproject1.Modelo.PacienteFabrica;
+import com.mycompany.mavenproject1.Modelo.Fabrica;
 /**
  *
  * @author Matheus
@@ -15,6 +24,8 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
      */
     public TelaEdicãoPacientes() {
         initComponents();
+        listar();
+        
     }
 
     /**
@@ -53,6 +64,11 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
         btMenuTP.setText("Menu");
 
         btNovoPaciTP.setText("Novo Paciente");
+        btNovoPaciTP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNovoPaciTPActionPerformed(evt);
+            }
+        });
 
         btEditTP.setText("Editar");
 
@@ -162,6 +178,24 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btFecharTPActionPerformed
 
+    private void btNovoPaciTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoPaciTPActionPerformed
+        TelaCadstro view = new TelaCadstro();
+        view.setVisible(true);
+        
+        view.addWindowListener(new WindowListener() {
+            public void windowClosing(WindowEvent e) {}
+            public void windowOpened(WindowEvent e) {}
+            public void windowClosed(WindowEvent e) {
+                listar();
+            }
+            public void windowIconified(WindowEvent e) {}
+            public void windowDeiconified(WindowEvent e) {}
+            public void windowActivated(WindowEvent e) {}
+            public void windowDeactivated(WindowEvent e) {}
+            
+        });
+    }//GEN-LAST:event_btNovoPaciTPActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -197,6 +231,25 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
         });
     }
 
+     public void listar() {        
+        DefaultTableModel model = (DefaultTableModel) tbPacientsTP.getModel();
+        model.getDataVector().removeAllElements();
+        
+        // Buscar no BD:
+        Fabrica<Paciente> fabrica = new PacienteFabrica();
+        ls = fabrica.listar();
+        
+        for (Paciente obj : ls) {
+            model.addRow(new Object[] { obj.getNome(), obj.getCpf(), obj.getDataNscP(), obj.getEmail(),
+            obj.getTel(), obj.getCidade(), obj.getObs(), obj.getAlerg(), obj.getDiabe(), obj.getPrecaoAlti(), obj.getPrecaoBaixa()});
+        }
+        
+        tbPacientsTP.setModel(model);
+    }
+    
+    private List<Paciente> ls;
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditTP;
     private javax.swing.JButton btExcluirTP;
