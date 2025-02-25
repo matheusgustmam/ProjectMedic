@@ -80,13 +80,13 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
 
         tbPacientsTP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nomes", "Cpf", "Nasc", "Email", "Telefone", "Cidade", "Obs", "Alergia", "Diabetes", "Preção Alta", "Preção Baixa"
             }
         ));
         jScrollPane1.setViewportView(tbPacientsTP);
