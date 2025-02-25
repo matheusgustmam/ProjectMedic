@@ -1,0 +1,59 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="RelatorioMedic" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="148e6e1a-cb45-4998-b2a9-a0b70cf39646">
+	<query language="sql"><![CDATA[]]></query>
+	<background splitType="Stretch"/>
+	<title height="82" splitType="Stretch">
+		<element kind="staticText" uuid="fc9e10bd-5b49-4076-9b8e-5fddf47bb276" x="187" y="20" width="180" height="30" fontSize="18.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Relatório Médico]]></text>
+		</element>
+		<element kind="line" uuid="fe6da371-689b-4fba-9719-7fbeac1d4d5d" x="0" y="81" width="560" height="1"/>
+		<element kind="image" uuid="1bd793f8-08b3-4b82-98b2-1c8283353b4b" x="10" y="0" width="80" height="81">
+			<expression><![CDATA["Imagens/clinica.png"]]></expression>
+		</element>
+	</title>
+	<pageHeader height="47" splitType="Stretch">
+		<element kind="staticText" uuid="b574f3ea-d4e6-4a96-a21c-dcd84aa162c8" x="0" y="0" width="60" height="20" fontSize="15.0">
+			<text><![CDATA[Médico :]]></text>
+		</element>
+		<element kind="staticText" uuid="310dbb31-dade-4094-8dec-5ca4779ab75c" x="0" y="20" width="70" height="20" fontSize="15.0">
+			<text><![CDATA[Paciente :]]></text>
+		</element>
+		<element kind="textField" uuid="d2860026-101f-4e74-8597-979e9566c3ea" x="60" y="0" width="210" height="20" fontSize="15.0" linkType="None" linkTarget="Self">
+			<expression><![CDATA["Text Field"]]></expression>
+		</element>
+		<element kind="textField" uuid="6ac6cce6-d1ad-4c8d-a7a1-f494bfcc79f2" x="70" y="20" width="200" height="20" fontSize="15.0">
+			<expression><![CDATA["Text Field"]]></expression>
+		</element>
+		<element kind="textField" uuid="0fd005f8-6d4e-4e09-b63d-67e3a98148ab" x="319" y="20" width="238" height="20" fontSize="15.0" pattern="MMMMM dd, yyyy" hTextAlign="Right">
+			<expression><![CDATA["impresso em: "+ new java.text.SimpleDateFormat("dd/MM/yyyy").format(new Date())]]></expression>
+		</element>
+	</pageHeader>
+	<detail>
+		<band height="470" splitType="Stretch">
+			<element kind="line" uuid="d22f6e21-0a48-4b56-8e54-93de62c7b56c" x="0" y="-1" width="560" height="1"/>
+			<element kind="staticText" uuid="343e5611-bc5e-4047-b8b7-b719cd7fac0f" x="0" y="0" width="100" height="20" fontSize="12.0">
+				<text><![CDATA[Recomendações:]]></text>
+			</element>
+			<element kind="textField" uuid="e84b3d08-62b8-4c55-8d7e-f32c0be89762" x="90" y="20" width="440" height="119" fontSize="12.0">
+				<expression><![CDATA["Text Field"]]></expression>
+			</element>
+			<element kind="staticText" uuid="5dca5df0-f0db-4862-8248-c4e09ef950b3" x="0" y="140" width="100" height="20" fontSize="12.0">
+				<text><![CDATA[Observações:]]></text>
+			</element>
+			<element kind="textField" uuid="aff25854-439e-4912-aa92-4a44ef3d7b12" x="90" y="160" width="440" height="130" fontSize="12.0">
+				<expression><![CDATA["Text Field"]]></expression>
+			</element>
+		</band>
+	</detail>
+	<pageFooter height="58" splitType="Stretch">
+		<element kind="textField" uuid="c49510dd-15ed-42a7-b4b0-efb6c3d4de35" x="230" y="11" width="140" height="22" fontSize="12.0">
+			<expression><![CDATA[" Página "+$V{PAGE_NUMBER}+ " de " + $V{PAGE_COUNT}]]></expression>
+		</element>
+		<element kind="line" uuid="f909737f-b3b5-4e34-a459-ca4ed2ea7f84" x="0" y="10" width="560" height="1"/>
+		<element kind="textField" uuid="cb5c0132-ce1c-4a51-be2f-38a912274030" x="387" y="24" width="170" height="28" fontSize="15.0" hTextAlign="Right">
+			<expression><![CDATA["Text Field"]]></expression>
+		</element>
+		<element kind="line" uuid="4f975acc-d3dc-4b41-b9dc-4a4cec722185" x="0" y="52" width="560" height="1"/>
+	</pageFooter>
+	<summary height="82" splitType="Stretch"/>
+</jasperReport>
