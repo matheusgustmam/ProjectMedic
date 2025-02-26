@@ -258,8 +258,8 @@ public class TelaDoAtestado extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbDrAT;
-    private javax.swing.JComboBox<String> cbPacienteAT;
+    private javax.swing.JComboBox<Medic> cbDrAT;
+    private javax.swing.JComboBox<Paciente> cbPacienteAT;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

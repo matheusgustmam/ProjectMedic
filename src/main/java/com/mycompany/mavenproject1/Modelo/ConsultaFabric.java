@@ -6,6 +6,8 @@ package com.mycompany.mavenproject1.Modelo;
 
 
 import com.mycompany.mavenproject1.Controle.Consulta;
+import com.mycompany.mavenproject1.Controle.Medic;
+import com.mycompany.mavenproject1.Controle.Paciente;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -121,20 +123,26 @@ public class ConsultaFabric implements Fabrica<Consulta> {
             Connection con = DBconex.getInstancia().getConexao();
             
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM consulta");
+            ResultSet rs = st.executeQuery("SELECT * FROM consulta INNER JOIN medicos ON idmedicos = id_medico ");
             
             while(rs.next()) {
                 Consulta obj = new Consulta();
                 
                 obj.setPacienteConsult(rs.getString("Paciente"));
-                obj.setMedicConsult(rs.getString("Dr"));
+                
                 obj.setEscp(rs.getString("Especialidade"));
                 obj.setDtConsult(rs.getDate("dataConsulta"));
                 obj.setHrConsult(rs.getString("horaConsulta"));
                 obj.setObsConsult(rs.getString("obsConsulta"));
                 obj.setId_medico(rs.getInt("id_medico"));
                 
+                Medic medico = new Medic();
+                medico.setNomeDr(rs.getString("NomeDr"));
+                //Paciente paciente = new Paciente();
+                //paciente.setNome(rs.getString("Nome"));
                 
+                obj.setMedico(medico);
+                //obj.setPaciente(paciente);
                 
                 obj.setId(rs.getInt("idConsulta"));
                 
@@ -183,5 +191,10 @@ public class ConsultaFabric implements Fabrica<Consulta> {
     @Override
     public Consulta getEntidade(Integer obj) {
         return null;
+    }
+
+    @Override
+    public List<Consulta> getListEntidades(String obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

@@ -170,7 +170,71 @@ public class PacienteFabrica implements Fabrica<Paciente> {
     }
 
     @Override
-    public Paciente getEntidade(Integer obj) {
-       return null;
+    public Paciente getEntidade(Integer id) {
+ 
+             try{
+            Paciente paciente = new Paciente();
+            
+            Connection con = DBconex.getInstancia().getConexao();
+            
+            String sql = "SELECT * FROM paciente WHERE idpaciente=?";
+            
+            PreparedStatement pstm = con.prepareStatement(sql);
+            
+            pstm.setInt(1, id);
+            
+            ResultSet rs =pstm.executeQuery();
+            
+            if(rs.next()){
+                paciente.setNome(rs.getString("Nome"));
+                paciente.setCpf(rs.getString("Cpf"));
+                paciente.setId(rs.getInt("idpaciente"));
+            }
+            rs.close();
+            return paciente;
+            
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }
     }
+
+    @Override
+    public List<Paciente> getListEntidades(String nome) {
+      
+        try{
+            List<Paciente> ls = new ArrayList<>();
+            
+            Connection con = DBconex.getInstancia().getConexao();
+            
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM paciente WHERE nome LIKE '"+nome+"%';");
+            
+            while(rs.next()) {
+                Paciente obj = new Paciente();
+                
+                obj.setNome(rs.getString("Nome"));
+                obj.setCpf(rs.getString("Cpf"));
+                obj.setDataNscP(rs.getDate("Nasc"));
+                obj.setEmail(rs.getString("Email"));
+                obj.setTel(rs.getString("Telefone"));
+                obj.setCidadeStr(rs.getString("Cidade"));
+                obj.setObs(rs.getString("Obs"));
+                obj.setAlerg(rs.getString("Alergia"));
+                obj.setDiabe(rs.getString("Diabetes"));
+                obj.setPrecaoAlti(rs.getString("PrecaoAlta"));
+                obj.setPrecaoBaixa(rs.getString("PrecaoBaixa"));
+                
+                obj.setId(rs.getInt("idpaciente"));
+                
+                ls.add(obj);
+            }
+            
+            return ls;
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
 }

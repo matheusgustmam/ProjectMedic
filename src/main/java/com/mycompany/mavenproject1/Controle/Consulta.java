@@ -20,6 +20,8 @@ public class Consulta extends DataObject {
     private Date dtConsult;
     private String hrConsult;
     private String obsConsult;
+    private Medic medico; 
+    private Paciente paciente;
     
     public String getPacienteConsult(){
         return pacienteConsult;
@@ -83,6 +85,22 @@ public class Consulta extends DataObject {
 
     public void setEscpConsult(String escpConsult) {
         this.escpConsult = escpConsult;
+    }
+
+    public Medic getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medic medico) {
+        this.medico = medico;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
     
 }

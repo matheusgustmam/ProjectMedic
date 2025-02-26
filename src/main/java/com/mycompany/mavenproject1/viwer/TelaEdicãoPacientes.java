@@ -80,6 +80,11 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
         btExcluirTP.setText("Excluir");
 
         btPesquisTP.setText("Pesquisar");
+        btPesquisTP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPesquisTPActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Tabela de Pacientes");
 
@@ -227,6 +232,10 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btEditTPActionPerformed
 
+    private void btPesquisTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisTPActionPerformed
+        listar();
+    }//GEN-LAST:event_btPesquisTPActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -271,13 +280,13 @@ public class TelaEdicãoPacientes extends javax.swing.JFrame {
         tbPacientsTP.setModel(model);
     }
     
-     public void listar() {        
+    public void listar() {        
         DefaultTableModel model = (DefaultTableModel) tbPacientsTP.getModel();
         model.getDataVector().removeAllElements();
         
         // Buscar no BD:
         Fabrica<Paciente> fabrica = new PacienteFabrica();
-        ls = fabrica.listar();
+        ls = fabrica.getListEntidades(txNomePesTP.getText());
         
         for (Paciente obj : ls) {
             model.addRow(new Object[] { obj.getNome(), obj.getCpf(), obj.getDataNscP(), obj.getEmail(),

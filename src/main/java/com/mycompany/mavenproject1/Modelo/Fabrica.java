@@ -18,4 +18,6 @@ public interface Fabrica<K extends DataObject> {
     public boolean excluir(K obj);
     public List<K> listar();
     public K getEntidade(Integer obj);
+    public List<K> getListEntidades(String obj);
+    
 }

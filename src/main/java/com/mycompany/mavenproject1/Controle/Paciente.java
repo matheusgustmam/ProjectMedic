@@ -135,17 +135,7 @@ public class Paciente extends DataObject {
 
     @Override
     public String toString() {
-        return "\nnome=" + nomeP + 
-                "\nCPF=" + cpfP + 
-                "\nidade=" + dataNscP + 
-                "\ntele=" + telP + 
-                "\ncidade=" + citiP + 
-                "\nEmails=" + emailP + 
-                "\nObs=" + obsP + 
-                "\nalerg=" + alergP + 
-                "\nprecaoAlti=" + precaoAltaP + 
-                "\nDiabe=" + diabeteP + 
-                "\nprecaoBaixa=" + precaoBaixaP + '}';
+        return nomeP; 
     }
      
      

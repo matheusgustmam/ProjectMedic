@@ -4,6 +4,20 @@
  */
 package com.mycompany.mavenproject1.viwer;
 
+import com.mycompany.mavenproject1.Modelo.ConsultaFabric;
+import com.mycompany.mavenproject1.Controle.Consulta;
+import com.mycompany.mavenproject1.Modelo.Fabrica;
+
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Aluno
@@ -15,6 +29,8 @@ public class TelaCosnultadeHoje extends javax.swing.JFrame {
      */
     public TelaCosnultadeHoje() {
         initComponents();
+        
+        listar();
     }
 
     /**
@@ -28,7 +44,7 @@ public class TelaCosnultadeHoje extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableTCH = new javax.swing.JTable();
+        tbConsulHojeTCH = new javax.swing.JTable();
         btAtualizarTCH = new javax.swing.JButton();
         btMenuTCH = new javax.swing.JButton();
         btFecharTCH = new javax.swing.JButton();
@@ -37,18 +53,18 @@ public class TelaCosnultadeHoje extends javax.swing.JFrame {
 
         jLabel1.setText("Consultas de Hoje ");
 
-        jTableTCH.setModel(new javax.swing.table.DefaultTableModel(
+        tbConsulHojeTCH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nome ", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
             }
         ));
-        jScrollPane1.setViewportView(jTableTCH);
+        jScrollPane1.setViewportView(tbConsulHojeTCH);
 
         btAtualizarTCH.setText("Atulização");
 
@@ -147,13 +163,39 @@ public class TelaCosnultadeHoje extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
+    public void listar() {
+        DefaultTableModel model = (DefaultTableModel) tbConsulHojeTCH.getModel();
+        model.getDataVector().removeAllElements();
+        
+        Fabrica<Consulta> fabrica = new ConsultaFabric();
+        ls = fabrica.listar();
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+        String dataAtual= sdf.format(new Date());
+             
+        for (Consulta obj : ls){
+            String dataConsulta= sdf.format(obj.getDtConsult());
+            if(dataAtual.equals(dataConsulta) ){
+              model.addRow(new Object[] { obj.getPacienteConsult(), obj.getMedicConsult(), obj.getEscp(),
+            obj.getDtConsult(), obj.getHrConsult(), obj.getObsConsult()});  
+            }
+        }
+       
+        tbConsulHojeTCH.setModel(model);
+    }
+    
+    private List<Consulta> ls;
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAtualizarTCH;
     private javax.swing.JButton btFecharTCH;
     private javax.swing.JButton btMenuTCH;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableTCH;
+    private javax.swing.JTable tbConsulHojeTCH;
     // End of variables declaration//GEN-END:variables
 }

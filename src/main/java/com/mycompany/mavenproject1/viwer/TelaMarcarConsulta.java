@@ -54,9 +54,11 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
         Fabrica<Medic> fabrica = new MedicFabric();
         cbDrCon.addItem(fabrica.getEntidade(valor.getId_medico()));
         cbEspecialidadeCon.addItem(valor.getEscp());
-        cbPacienteCon.addItem(valor.getPacienteConsult());
+        Fabrica<Paciente> fabricaPaci = new PacienteFabrica();
         
-        cbPacienteCon.setSelectedItem(valor.getPacienteConsult());
+        cbPacienteCon.addItem(fabricaPaci.getEntidade(valor.getPaciente().getId()));
+        
+        cbPacienteCon.setSelectedItem(valor);
         cbDrCon.setSelectedItem(valor);
         cbEspecialidadeCon.setSelectedItem(valor.getEscp());
         txaObsCon.setText(valor.getObsConsult());
@@ -108,8 +110,6 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
         jLabel4.setText("Especialidade");
 
         jLabel5.setText("Obs:");
-
-        cbPacienteCon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cbDrCon.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -268,7 +268,7 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
         
         try{
             
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             obj.setDtConsult(formatter.parse(txfDateConst.getText()));
             
             //SimpleTimeZone formatterhor = new SimpleTimeZone(ABORT, ID),"hh:mm:ss");
@@ -306,7 +306,7 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
         this.valor = valor;
     }
             
-    public void listarPaciente(){
+   /* public void listarPaciente(){
         DefaultComboBoxModel model = new DefaultComboBoxModel();
              
         Fabrica<Paciente> fabrica = new PacienteFabrica();
@@ -315,6 +315,20 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
             model.addElement(ls.get(i).getNome()); 
         }
       
+        cbPacienteCon.setModel(model);
+    } */
+    
+    public void listarPaciente(){
+        DefaultComboBoxModel<Paciente> model = new DefaultComboBoxModel();
+        
+        
+        Fabrica<Paciente> fabrica = new PacienteFabrica();
+        List<Paciente> ls = fabrica.listar();
+        for (int i = 0; i < ls.size(); i++) {
+            model.addElement(ls.get(i)); 
+            
+        }
+        
         cbPacienteCon.setModel(model);
     }
     
@@ -387,7 +401,7 @@ public class TelaMarcarConsulta extends javax.swing.JFrame {
     private javax.swing.JButton btMenu;
     private javax.swing.JComboBox<Medic> cbDrCon;
     private javax.swing.JComboBox<String> cbEspecialidadeCon;
-    private javax.swing.JComboBox<String> cbPacienteCon;
+    private javax.swing.JComboBox<Paciente> cbPacienteCon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

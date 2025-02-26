@@ -150,6 +150,11 @@ public class MedicFabric implements Fabrica<Medic> {
         }
     }
 
+    @Override
+    public List<Medic> getListEntidades(String obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     
 }
 
